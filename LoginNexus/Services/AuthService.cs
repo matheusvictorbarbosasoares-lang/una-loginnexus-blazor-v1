@@ -1,0 +1,18 @@
+using LoginNexus.Models;
+
+namespace LoginNexus.Services
+{
+    public class AuthService
+    {
+        private readonly List<User> _users = new()
+    {
+        new User { Email = "Daniel@nexus.edu", Password = "123", Role = "Professor", Name = "Dr. Arnaldo" },
+        new User { Email = "Matheus@nexus.edu", Password = "123", Role = "Student", Name = "Estudante 01" }
+    };
+
+        public User? Authenticate(string email, string password)
+        {
+            return _users.FirstOrDefault(u => u.Email == email && u.Password == password);
+        }
+    }
+}
